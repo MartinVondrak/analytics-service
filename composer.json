@@ -1,0 +1,16 @@
+{
+    "name": "martinvondrak/analytics-service",
+    "description": "Simple server application that calculates customers' analytics",
+    "license": "proprietary",
+    "require": {
+        "php": "7.2.*"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^0.12.19"
+    },
+    "autoload": {
+        "psr-4": {
+            "MartinVondrak\\AnalyticsService\\": "src/"
+        }
+    }
+}
