@@ -8,6 +8,7 @@ use MartinVondrak\AnalyticsService\Http\HttpException;
 use MartinVondrak\AnalyticsService\Http\Request;
 use MartinVondrak\AnalyticsService\Http\Response;
 use MartinVondrak\AnalyticsService\Service\AuthenticatorService;
+use MartinVondrak\AnalyticsService\Service\CustomerParsingService;
 use MartinVondrak\AnalyticsService\Validator\RequestValidator;
 
 class Server
@@ -18,10 +19,17 @@ class Server
     /** @var RequestValidator */
     private $requestValidator;
 
-    public function __construct(AuthenticatorService $authenticatorService, RequestValidator $requestValidator)
-    {
+    /** @var CustomerParsingService */
+    private $customerParsingService;
+
+    public function __construct(
+        AuthenticatorService $authenticatorService,
+        RequestValidator $requestValidator,
+        CustomerParsingService $customerParsingService
+    ) {
         $this->authenticatorService = $authenticatorService;
         $this->requestValidator = $requestValidator;
+        $this->customerParsingService = $customerParsingService;
     }
 
     public function handleRequest(Request $request): Response
@@ -32,6 +40,8 @@ class Server
         } catch (HttpException $e) {
             return new Response($e->getCode(), $e->getMessage());
         }
+
+        $customers = $this->customerParsingService->parse($request->getFilePath());
         return new Response(200, '');
     }
 

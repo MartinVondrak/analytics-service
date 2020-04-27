@@ -68,4 +68,9 @@ class Request
     {
         return $this->file;
     }
+
+    public function getFilePath(): string
+    {
+        return (string)$this->file['tmp_name'];
+    }
 }
