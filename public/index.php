@@ -2,13 +2,24 @@
 
 require '../vendor/autoload.php';
 
+use MartinVondrak\AnalyticsService\Resolver\CustomerActionResolver;
 use MartinVondrak\AnalyticsService\Server;
 use MartinVondrak\AnalyticsService\Http\Request;
 use MartinVondrak\AnalyticsService\Service\AuthenticatorService;
 use MartinVondrak\AnalyticsService\Service\CustomerParsingService;
+use MartinVondrak\AnalyticsService\Service\SerializationService;
+use MartinVondrak\AnalyticsService\Service\StatisticRecordService;
 use MartinVondrak\AnalyticsService\Validator\RequestValidator;
 
+$server = new Server(
+    new AuthenticatorService('admin', 'pass'),
+    new RequestValidator(),
+    new CustomerParsingService(),
+    new CustomerActionResolver(),
+    new StatisticRecordService(),
+    new SerializationService()
+);
+
 $request = Request::initFromGlobals();
-$server = new Server(new AuthenticatorService('admin', 'pass'), new RequestValidator(), new CustomerParsingService());
 $response = $server->handleRequest($request);
-$server->sendResponse($response);
+echo $server->sendResponse($response);

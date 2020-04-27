@@ -3,7 +3,8 @@
     "description": "Simple server application that calculates customers' analytics",
     "license": "proprietary",
     "require": {
-        "php": "7.2.*"
+        "php": "7.2.*",
+        "ext-json": "*"
     },
     "require-dev": {
         "phpstan/phpstan": "^0.12.19"

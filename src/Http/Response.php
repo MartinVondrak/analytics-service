@@ -8,7 +8,9 @@ class Response
 {
     private const MESSAGES = [
         200 => 'OK',
+        400 => 'Bad Request',
         401 => 'Unauthorized',
+        405 => 'Method Not Allowed',
     ];
 
     /** @var int HTTP response status code */
