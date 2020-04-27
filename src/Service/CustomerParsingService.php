@@ -29,9 +29,13 @@ class CustomerParsingService
         return $customers;
     }
 
+    /**
+     * @param string[]|int[] $line
+     * @return Customer
+     */
     private function buildCustomerFromLine(array $line): Customer
     {
         // FIXME check line content
-        return new Customer($line[0], $line[1], new \DateTime($line[2]));
+        return new Customer((string)$line[0], (int)$line[1], new \DateTime((string)$line[2]));
     }
 }

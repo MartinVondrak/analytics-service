@@ -32,7 +32,7 @@ class SerializationService
             'stats' => $stats,
         ];
 
-        return json_encode($data);
+        return json_encode($data) ?: '';
     }
 
     /**
