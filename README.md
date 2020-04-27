@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/MartinVondrak/analytics-service.svg?branch=master)](https://travis-ci.org/MartinVondrak/analytics-service)
+
 # USER STORY
 I, as business analyst want simple server, where I will input/send customer data (in .csv file) and get
 - recommended action for them (see Resolver)
