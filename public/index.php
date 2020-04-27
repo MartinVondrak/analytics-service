@@ -12,6 +12,7 @@ use MartinVondrak\AnalyticsService\Service\StatisticRecordService;
 use MartinVondrak\AnalyticsService\Validator\RequestValidator;
 
 $server = new Server(
+    // FIXME use getenv to get user and password from environment variables
     new AuthenticatorService('admin', 'pass'),
     new RequestValidator(),
     new CustomerParsingService(),

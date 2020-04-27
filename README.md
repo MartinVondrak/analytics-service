@@ -42,3 +42,13 @@ So I can decide on marketing action.
 - Use PHP 7.2 
 - Do not work for more than 6 hours (we want to see what you can do in that time)
 - Application does not need to be perfect, but it should be working
+
+## Usage
+You need Composer and PHP 7.2 to run this application.
+```
+$ composer install
+$ vendor/bin/phpstan analyse -c phpstan.neon
+$ vendor/bin/phpunit tests/
+$ php -S <ip-addr>:<port> -t public
+$ curl -F "data=@<path-to-file>" http://admin:pass@<ip-addr>:<port>
+```
